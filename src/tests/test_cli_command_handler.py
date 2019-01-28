@@ -1,14 +1,12 @@
 import subprocess
+from cli_handler.cli_commands_handler import CliCommandsHandler
+from system.system_interaction import __interact_with_bash
 
-from cli_handler import CliCommandsHandler
-cli = None
-def setup_cli_command():
-    cli = CliCommandsHandler()
+# from nose import with_setup
 
-def teardown():
-    pass
 
-@with_setup(setup_cli_command, teardown)
 def test_kernel_command():
+    cli = CliCommandsHandler()
     kernel = cli.print_command(first_arg="kernel")
-    assert kernel == subprocess.check_output(['uname', '-r'])
+    assert kernel is not None
+    assert kernel == __interact_with_bash(args=['uname', '-r'])
