@@ -1,12 +1,5 @@
 from system.system_interaction import __interact_with_bash
 
-SUPPORTED_DISTROS = {
-            "debian": update_debian_linux,
-            "ubuntu": update_debian_linux,
-            "arch": update_arch_linux,
-            "manjaro": update_arch_linux
-        }
-
 def update_linux(distro):
     if SUPPORTED_DISTROS.get(distro, None) is not None:
         result_update = SUPPORTED_DISTROS.get(distro, None)()
@@ -21,3 +14,9 @@ def update_debian_linux():
 def update_arch_linux():
     update_arch = __interact_with_bash(args=["mkdir", "yay_log", "&&", "yay", "-Syyu", "&>", "yay_log/update_arch_based"])
 
+SUPPORTED_DISTROS = {
+            "debian": update_debian_linux,
+            "ubuntu": update_debian_linux,
+            "arch": update_arch_linux,
+            "manjaro": update_arch_linux
+        }
