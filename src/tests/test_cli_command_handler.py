@@ -16,3 +16,9 @@ def test_system_distro():
     distro = cli.print_command(first_arg="distro")
     assert distro is not None
     assert distro == __interact_with_bash(args=['cat', '/etc/os-release'])
+
+def test_cpu_temperature():
+    cli = CliCommandsHandler()
+    temperature_cpu = cli.print_command(first_arg="cpu", second_arg="temperature")
+    assert temperature_cpu is not None
+    print(temperature_cpu)
