@@ -22,9 +22,8 @@ class CliCommandsHandler(object):
             :first_arg type: str
         """
         result = self.available_commands.get(first_arg, None)
-        if isinstance(result, dict):
-            if second_arg is not None:
-                result = result.get(second_arg, None)
-        return result()
+        if result is not None and second_arg is not None and isinstance(result, dict):
+            result = result.get(second_arg, None)
+        return result() if result is not None else None
 
 

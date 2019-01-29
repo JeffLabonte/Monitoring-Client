@@ -21,4 +21,13 @@ def test_cpu_temperature():
     cli = CliCommandsHandler()
     temperature_cpu = cli.print_command(first_arg="cpu", second_arg="temperature")
     assert temperature_cpu is not None
-    print(temperature_cpu)
+
+def test_nvidia_temperature():
+    cli = CliCommandsHandler()
+    temperature_nvidia = cli.print_command(first_arg="nvidia", second_arg="temperature")
+    assert temperature_nvidia is not None
+
+def test_print_non_existant_first():
+    cli = CliCommandsHandler()
+    empty_result = cli.print_command(first_arg="I don;t")
+    assert empty_result is None
