@@ -1,0 +1,17 @@
+from grimsleepless/home_monitoring-base:latest
+MAINTAINER Jean-Francois Labonte <jeff.labonte12@gmail.com>
+
+RUN apt install -y \
+    python3-pip
+
+
+COPY requirements /application/requirements
+
+COPY scripts/test.sh /usr/local/bin/test.sh
+RUN chmod +x /usr/local/bin/test.sh
+
+ENTRYPOINT ["test.sh"]
+CMD ["nosetest", "-v"]
+
+COPY src /application
+WORKDIR /application
