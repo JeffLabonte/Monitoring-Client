@@ -10,3 +10,9 @@ def test_kernel_command():
     kernel = cli.print_command(first_arg="kernel")
     assert kernel is not None
     assert kernel == __interact_with_bash(args=['uname', '-r'])
+
+def test_system_distro():
+    cli = CliCommandsHandler()
+    distro = cli.print_command(first_arg="distro")
+    assert distro is not None
+    assert distro == __interact_with_bash(args=['cat', '/etc/os-release'])
