@@ -1,8 +1,6 @@
 #!/bin/bash
 
-. /appenv/bin/activate
-
-alias nosetests="nosetests3"
+source appenv/bin/activate
 
 # Time to install stuff with pip
 pip3 download -d /build -r requirements/requirements.txt --no-input

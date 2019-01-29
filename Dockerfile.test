@@ -10,7 +10,7 @@ COPY scripts/test.sh /usr/local/bin/test.sh
 RUN chmod +x /usr/local/bin/test.sh
 
 ENTRYPOINT ["test.sh"]
-CMD ["nosetests", "-v"]
+CMD ["nosetests3", "-v"]
 
 COPY src /application
 WORKDIR /application
