@@ -2,8 +2,7 @@ from grimsleepless/home_monitoring-base:latest
 MAINTAINER Jean-Francois Labonte <jeff.labonte12@gmail.com>
 
 RUN apt install -y \
-    python3-pip
-
+    python3-pip python3-nose
 
 COPY requirements /application/requirements
 
