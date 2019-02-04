@@ -5,6 +5,14 @@ from cli_handler.cli_commands_handler import CliCommandsHandler
 
 import websocket
 
+def convert_list_to_dict(arguments):
+    idx = 0
+    dictionnary = {}
+    for a in arguments:
+        dictionnary[str(idx)] = a
+        idx = idx + 1
+    return dictionnary
+
 parser = argparse.ArgumentParser()
 prober = parser.add_argument_group("Print system information")
 prober.add_argument("--print", "-p", dest="command", action="store_true", help="Print to console, one of the supported commands")
@@ -17,7 +25,11 @@ args = parser.parse_args()
 
 if __name__ == "__main__":
     if args.command is not None:
-        print("I am going to print: {}".format(args.command))
-        pass
+        cli_arguments = convert_list_to_dict(arguments=args.arguments)
+        if len(cli_arguments) > 2:
+            raise SystemError("This tools can take up to 2 args maximum")
+        CLI = CliCommandsHandler()
+        result = CLI.print_command(first_arg=cli_arguments.get("0", None), second_arg=cli_arguments.get("1", None))
+        print(result)
     else:
         print("Run a server")
