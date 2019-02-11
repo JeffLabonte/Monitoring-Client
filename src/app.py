@@ -2,12 +2,9 @@ import argparse
 import logging
 from websocket import create_connection
 
-from system.system_prober import linux_system_prober
-from system.system_updater import linux_update
 from cli_handler.cli_commands_handler import CliCommandsHandler
 from monitoring_websocket.websocket import MonitoringWebSocket
 
-import websocket
 
 def convert_list_to_dict(arguments):
     idx = 0
@@ -16,6 +13,7 @@ def convert_list_to_dict(arguments):
         dictionnary[str(idx)] = a
         idx = idx + 1
     return dictionnary
+
 
 parser = argparse.ArgumentParser()
 prober = parser.add_argument_group("Print system information")
