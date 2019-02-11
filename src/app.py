@@ -40,4 +40,4 @@ if __name__ == "__main__":
             ws.run_forever()
             logging.info("Server started")
         except ConnectionRefusedError as ex:
-           logging.critical(ex)
+            logging.critical(ex)
